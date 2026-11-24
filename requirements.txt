@@ -1,0 +1,7 @@
+# usv-logview core (the viewer, the camera from .svo2, depth, charts, the mapping lab)
+mcap>=1.1,<2
+numpy>=1.24
+opencv-python-headless>=4.8
+pillow>=10
+pyyaml>=6
+paho-mqtt>=1.6

@@ -19,14 +19,30 @@ boat's recorded detections, telemetry, and the timebar (FCU mode, armed, mission
 ![camera and depth](docs/screenshots/camera_depth.jpg)
 *The camera expanded: stereo depth computed on the Mac (objects from stereo, the water from a fitted plane) with its metre scale.*
 
-## Run it
+## Install and run
 
-```bash
-git clone https://github.com/ExtraDmitr/usv-logview.git
-cd usv-logview
-./run.sh                                          # opens the included sample (first start builds .venv, a few minutes)
-LOGVIEW_DATA=/path/to/DATASETS ./run.sh           # your own data; http://127.0.0.1:8770/
-```
+Download the repository (**Code → Download ZIP** and extract it, or `git clone https://github.com/ExtraDmitr/usv-logview.git`), then:
+
+| | install (once) | run |
+|---|---|---|
+| **macOS / Linux** | `bash install.sh` | `./run.sh` (macOS: or double-click **Run Viewer.command**) |
+| **Windows** | double-click **install.bat** | double-click **run.bat** |
+
+The installer finds Python 3.10+ and ffmpeg and offers to install what is missing (Homebrew / apt / dnf / pacman, on Windows winget),
+creates a project-local **`.venv`** with everything Python-side (nothing else is installed globally), runs the self-test and tells you how to
+start. `run.sh` / `run.bat` run it by themselves on the first start. Options: `--minimal` / `-Minimal` skips the YOLO / CV_NEW detection
+engines (ultralytics + torch, ~1–2 GB); `--yes` / `-Yes` does not ask; `--fresh` / `-Fresh` rebuilds `.venv`; `--check` / `-Check` only
+reports. The viewer opens at http://127.0.0.1:8770/; stop it with **✕ Close** in the page or Ctrl-C.
+
+Your own data: `LOGVIEW_DATA=/path/to/DATASETS ./run.sh` (Windows: `set LOGVIEW_DATA=C:\path\to\DATASETS` then `run.bat`); without it the
+viewer opens the included `sample_data/`. Run options: `--port N`, `--no-browser`. On a Mac the video cache uses the hardware H.264
+encoder, elsewhere libx264 (included in the usual ffmpeg builds). Tested on macOS (Apple silicon); the Windows scripts follow the same steps
+but have not been run on a Windows machine yet - please report what they say.
+
+Paths in `engines.json` use `${DATASETS}`, `${ROBOTX}` (the folder holding DATASETS and MASTER_SCRIPTS) and `${MASTER_SCRIPTS}` (the
+team repo checkout); set them as environment variables if your layout differs (defaults: `LOGVIEW_DATA` = two folders up from the tool,
+else `sample_data/`; `ROBOTX` = its parent; `MASTER_SCRIPTS` = `$ROBOTX/MASTER_SCRIPTS`). Model weights are not in this repository: the
+self-test lists the engines without them as "not available here (optional)".
 
 ### Sample data (`sample_data/`, ≈ 335 MB)
 

@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 .logview_cache/
 .DS_Store
+Run Viewer.command

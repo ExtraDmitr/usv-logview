@@ -1,6 +1,9 @@
 """logview: the run viewer's local server (http://127.0.0.1:8770). Usage: ./run.sh [--port N] [--no-browser]
 Read-only on the data, except the video cache (camera/<session>/.logview_cache/) and engine results cache beside it."""
 import argparse, functools, json, os, re, sys, threading, time, traceback, urllib.parse, webbrowser
+if os.name == "nt" and not sys.flags.utf8_mode:              # Windows: the logs are UTF-8; re-run in Python's UTF-8 mode
+    import subprocess
+    sys.exit(subprocess.call([sys.executable, "-X", "utf8", *sys.argv]))
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 HERE = os.path.dirname(os.path.abspath(__file__))

@@ -1,0 +1,2 @@
+# optional: the YOLO / CV_NEW detection engines (pulls torch, ~1-2 GB). install.sh --minimal skips it.
+ultralytics>=8.3

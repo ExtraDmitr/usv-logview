@@ -4,7 +4,7 @@ with the course profile's knobs overridden, and return the map as it would have 
 
 Knob overrides are dotted paths into the profile YAML (perception.min_obs, map.assoc_gate_m, perception.merge.a ...), applied before the
 boat's own config loader (companion.config.from_dict), so the lab never changes MASTER_SCRIPTS. Presets: presets/mapping/<name>.json."""
-import copy, glob, importlib.util, json, math, os, re, sqlite3, sys, threading, time, types
+import copy, glob, importlib.util, json, math, os, pathlib, re, sqlite3, sys, threading, time, types
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "engines.json"))).get("mapping", {}) if os.path.exists(os.path.join(HERE, "engines.json")) else {}
@@ -141,7 +141,7 @@ def _guard_msgs(run_dir):
     out = {}
     for db in glob.glob(os.path.join(run_dir, "motion", "*", "boat_*.sqlite")):
         try:
-            for (pl,) in sqlite3.connect(f"file:{db}?mode=ro", uri=True).execute("select payload from messages where topic='local/usv/perception/guard'"):
+            for (pl,) in sqlite3.connect(pathlib.Path(db).resolve().as_uri() + "?mode=ro", uri=True).execute("select payload from messages where topic='local/usv/perception/guard'"):
                 b = json.loads(pl).get("body") or {}
                 out[round(float(b.get("t_cam") or 0), 1)] = b
         except Exception:

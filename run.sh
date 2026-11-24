@@ -1,9 +1,9 @@
 #!/bin/bash
-# Run Viewer: ./run.sh [--port 8770] [--no-browser]   (first start creates .venv: mcap, numpy, opencv, pillow, ultralytics)
+# Run Viewer: ./run.sh [--port 8770] [--no-browser]   (no .venv yet -> runs install.sh first)
 cd "$(dirname "$0")" || exit 1
 if [ ! -x .venv/bin/python ]; then
-  echo "creating .venv (one time, a few minutes: ultralytics / torch for the CV engines) ..."
-  python3 -m venv .venv && .venv/bin/pip install -q --upgrade pip && .venv/bin/pip install -q mcap numpy opencv-python-headless pillow ultralytics pyyaml paho-mqtt || exit 1
+  echo "first start: preparing this laptop (install.sh) ..."
+  bash install.sh || exit 1
 fi
-command -v ffmpeg >/dev/null || { echo "ffmpeg is needed for the video cache (brew install ffmpeg)"; exit 1; }
+command -v ffmpeg >/dev/null || echo "note: ffmpeg not found - the camera tile will not work (bash install.sh offers to install it)"
 exec .venv/bin/python server.py "$@"
