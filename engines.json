@@ -1,0 +1,27 @@
+{
+  "_note": "Paths and options per CV engine (engines/<name>.py). Add a new engine file + a block here; \"enabled\": false hides one. Paths may use ${DATASETS}, ${ROBOTX}, ${MASTER_SCRIPTS} (core.py sets them; override with environment variables).",
+  "engines": {
+    "recorded": {},
+    "yolo_buoys": {
+      "weights": "${ROBOTX}/ws/pull_2026-11-10/agx_cv_models/buoys/best.pt",
+      "imgsz": 768,
+      "conf": 0.6
+    },
+    "cvnew": {
+      "dir": "${MASTER_SCRIPTS}/CV_NEW/11-12",
+      "detector": "buoy_detector_yolo11m_1280_best.pt",
+      "classifier": "marker_classifier_yolo11m_320_best.pt",
+      "digits": "number_detector_yolo11n_320_best.pt",
+      "conf": 0.25
+    },
+    "lamp": {
+      "model": "${DATASETS}/_labels/cv_review/led_test_2026-11-13/lamp_model.json",
+      "led_core": "${MASTER_SCRIPTS}/cv/buoys_multi/led_core.py",
+      "threshold": 0.7
+    }
+  },
+  "mapping": {
+    "master_scripts": "${MASTER_SCRIPTS}",
+    "profile": "${MASTER_SCRIPTS}/profiles/course/usv_course.yaml"
+  }
+}

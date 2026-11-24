@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run Viewer</title>
+<style>
+:root{
+  --bg:#0f1216; --panel:#171b21; --panel2:#1d222a; --line:#2a313b; --text:#e6e9ee; --muted:#8b95a3; --accent:#4aa3ff;
+  --cursor:#ffd23f; --good:#30d158; --warn:#ffb020; --bad:#ff4d4f; --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:13px/1.35 var(--font)}
+button,select,input{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+button{cursor:pointer} button:hover{border-color:var(--accent)} button.on{background:#1f3550;border-color:var(--accent)}
+button:disabled{opacity:.45;cursor:default}
+input[type=checkbox]{accent-color:var(--accent)}
+.app{display:grid;grid-template-rows:auto 1fr auto;height:100vh}
+header{display:flex;align-items:center;gap:10px;padding:6px 10px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+header h1{font-size:14px;margin:0 6px 0 0;font-weight:600}
+.chip{display:inline-block;padding:1px 7px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);font-size:12px}
+.chip.cv{color:#0b0;border-color:#1f6f2f;background:#12301b;color:#7ee28f}
+.grow{flex:1}
+main{display:grid;grid-template-columns:var(--colL,44%) 8px 1fr;gap:0;padding:8px;min-height:0}
+.gutter{flex:none;position:relative;z-index:5}
+.gutter::after{content:"";position:absolute;inset:0;margin:auto;border-radius:3px;background:transparent;transition:background .15s}
+.gutter:hover::after,.gutter.drag::after{background:var(--accent)}
+.gv{width:8px;cursor:col-resize}.gv::after{width:3px}
+.gh{height:8px;cursor:row-resize}.gh::after{height:3px}
+.col{display:flex;flex-direction:column;gap:0;min-height:0;min-width:0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;min-height:0;position:relative}
+.tile>.hd{display:flex;align-items:center;gap:6px;padding:4px 8px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tile>.hd .title{font-weight:600}
+.tile>.hd .tools{margin-left:auto;display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.tile>.hd button{padding:1px 7px}
+.tile>.bd{position:relative;flex:1;min-height:0}
+.tile canvas{display:block;width:100%;height:100%}
+#mapTile{flex:1 1 42%;min-height:120px} #camTile{flex:1 1 58%;min-height:160px}
+#charts{overflow:auto;display:flex;flex-direction:column;gap:0;min-height:0}
+.chart{height:150px;flex:none;min-height:70px}
+.legend{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.legend label{display:flex;gap:3px;align-items:center;cursor:pointer}
+.legend i{display:inline-block;width:10px;height:3px;border-radius:2px}
+footer{border-top:1px solid var(--line);background:var(--panel);padding:6px 10px}
+.transport{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.clock{font-family:var(--mono);font-size:13px;min-width:260px}
+#timebar{height:var(--tbH,150px);width:100%;display:block;cursor:crosshair}
+footer{position:relative}
+.camwrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden}
+.camwrap video,.camwrap canvas.depth{max-width:100%;max-height:100%;display:block}
+.camwrap canvas.ov{position:absolute;pointer-events:auto}
+.depthscale{position:absolute;right:8px;top:8px;bottom:8px;width:64px;display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:rgba(15,18,22,.85);border:1px solid var(--line);border-radius:6px;padding:6px 4px;font-size:11px}
+.depthscale canvas{flex:1;width:18px}
+.depthscale input{width:52px;padding:1px 3px;font-size:11px;text-align:right}
+.camstatus:empty{display:none}.camstatus{position:absolute;left:8px;bottom:6px;font:11px var(--mono);color:#cfd6df;background:rgba(0,0,0,.55);padding:2px 6px;border-radius:4px}
+.overlaymsg{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;color:var(--muted);text-align:center;padding:20px}
+.bar{width:60%;height:8px;border-radius:4px;background:var(--panel2);overflow:hidden}.bar>div{height:100%;background:var(--accent);width:0}
+.enginebar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px}
+.enginebar label{display:flex;gap:3px;align-items:center}
+.enginebar .sw{width:10px;height:10px;border-radius:2px;display:inline-block}
+#tip{position:fixed;z-index:1000;pointer-events:none;background:#0b0e12;border:1px solid #3a4452;color:var(--text);padding:6px 8px;border-radius:6px;
+  font-size:12px;max-width:380px;box-shadow:0 6px 18px rgba(0,0,0,.45);display:none;white-space:pre-line}
+#tip b{color:#fff}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:900}
+.modal.show{display:flex}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;max-width:min(1100px,94vw);max-height:90vh;overflow:auto;padding:14px 16px;
+  box-shadow:0 10px 40px rgba(0,0,0,.6)}
+.card h2{margin:0 0 8px;font-size:15px}
+.card table{border-collapse:collapse;width:100%;font-size:12px}
+.card td,.card th{border-bottom:1px solid var(--line);padding:3px 6px;text-align:left;vertical-align:top}
+.card th{color:var(--muted);font-weight:500;position:sticky;top:0;background:var(--panel)}
+.card .x{float:right}
+.kv td:first-child{color:var(--muted);white-space:nowrap}
+tr.pick{cursor:pointer} tr.pick:hover{background:var(--panel2)}
+.expand{position:fixed;inset:3vh 3vw;z-index:950;display:none;flex-direction:column}
+.expand.show{display:flex}
+.muted{color:var(--muted)}
+kbd{font:11px var(--mono);border:1px solid var(--line);border-radius:3px;padding:0 4px;background:var(--panel2)}
+.lab{position:fixed;right:18px;top:70px;width:410px;max-height:84vh;z-index:800;background:var(--panel);border:1px solid #3a4452;border-radius:10px;
+  box-shadow:0 10px 40px rgba(0,0,0,.6);display:flex;flex-direction:column}
+.labhd{display:flex;gap:8px;align-items:center;padding:6px 10px;border-bottom:1px solid var(--line);cursor:move;user-select:none}
+.labbd{overflow:auto;padding:8px 10px;font-size:12px}
+.labbd details{border:1px solid var(--line);border-radius:6px;margin:6px 0;padding:2px 6px}
+.labbd summary{cursor:pointer;color:var(--muted);padding:2px 0}
+.krow{display:grid;grid-template-columns:118px 1fr 62px 18px;gap:6px;align-items:center;margin:3px 0}
+.krow.changed label{color:#ffd23f}
+.krow input[type=range]{width:100%}
+.krow input[type=number]{width:62px;padding:1px 3px}
+.krow .rs{cursor:pointer;color:var(--muted);visibility:hidden}.krow.changed .rs{visibility:visible}
+.statchips{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0}
+.statchips span{border:1px solid var(--line);border-radius:10px;padding:1px 7px;background:var(--panel2)}
+.labrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:4px 0}
+#labSpark{width:100%;height:90px;display:block;background:#12161b;border-radius:6px}
+@media (max-width:900px){main{grid-template-columns:1fr}.gv{display:none}#charts{max-height:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Run Viewer</h1>
+    <button id="btnRuns" data-tip="Open the run list: all DATASETS runs with their category, CV tag, length and camera counts. Click a row to load it.">☰ Runs</button>
+    <span id="runName" class="muted">no run loaded</span>
+    <span id="runChips"></span>
+    <span class="grow"></span>
+    <button id="btnLink" data-tip="Copy a link to this exact moment (run, time, camera view, engines).">Link</button>
+    <button id="btnEvents" data-tip="All events of this run (boat console, mission manager, operator / judge) in a list; click one to jump there.">Events</button>
+    <button id="btnInfo" data-tip="The run's run.json: where every piece came from, the boat and camera statistics.">Run info</button>
+    <button id="btnHelp" data-tip="Keyboard shortcuts and how the viewer works.">?</button>
+    <button id="btnQuit" data-tip="Close the viewer: stops the logview server process (asks first). Start it again with ./run.sh." style="border-color:#5a2a2a">✕ Close</button>
+  </header>
+  <main>
+    <div class="col">
+      <section class="tile" id="mapTile">
+        <div class="hd"><span class="title">Map</span>
+          <select id="mapSrc" data-tip="Which map to replay: the boat's own map as recorded on the boat, the operator station's copy, the mapping lab's replay (the boat's mapping code re-run with your knobs), or none (track and detections only)."></select>
+          <button id="btnLab" data-tip="Mapping lab: re-run the boat's mapping on this run's camera detections with tweakable knobs (gates, ghost filter, ageing, merge, rays ...), compare with the boat's own map, save presets.">🧪 Lab</button>
+          <span class="legend" id="mapLayers"></span>
+          <span class="tools">
+            <button id="mapFollow" class="on" data-tip="Keep the boat in view as time moves.">Follow</button>
+            <button id="mapFit" data-tip="Zoom to the whole track.">Fit</button>
+            <button data-expand="mapTile" data-tip="Expand the map (Esc to close).">⤢</button>
+            <button data-save="map" data-tip="Save the map as a PNG.">PNG</button>
+          </span></div>
+        <div class="bd"><canvas id="map"></canvas></div>
+      </section>
+      <div class="gutter gh" id="gMapCam" data-tip="Drag to share the height between the map and the camera; double-click to reset."></div>
+      <section class="tile" id="camTile">
+        <div class="hd"><span class="title">Camera</span>
+          <select id="camSel" data-tip="Camera recording. A run can have several (the recorder was stopped and restarted): 'auto' follows the time and switches to the recording that covers it; pick one to stay on it."></select>
+          <select id="eyeSel" data-tip="left = the image the boat's detector saw (ZED SDK rectified; boxes and depth line up with it). left raw / right raw = the eyes exactly as stored in the recording (unrectified lens image; no boxes / depth on them). Cached the first time you pick one."><option value="left">left (as the boat saw it)</option><option value="left_raw">left raw lens</option><option value="right">right raw lens</option></select>
+          <select id="viewSel" data-tip="Image, depth, or depth over the image. Depth: the AGX's recorded neural depth where it was saved, else stereo computed on the Mac.">
+            <option value="image">image</option><option value="depth">depth</option><option value="blend">image + depth</option></select>
+          <select id="depthSrc" data-tip="Depth source. auto = the recorded neural depth on the frames that have it (ticks on the timebar), stereo elsewhere.">
+            <option value="auto">auto</option><option value="recorded">recorded (AGX)</option><option value="stereo">stereo (Mac)</option></select>
+          <select id="stereoMode" data-tip="How stereo depth is shown. objects + water = buoys / boats / shore from stereo, the water from a fitted plane (a model: camera height from the recorded depth, horizon found per frame). objects only = the stereo points standing above the water (reflections removed). raw = everything SGBM found (patchy on water, partly wrong: reflections).">
+            <option value="plane">objects + water</option><option value="objects">objects only</option><option value="raw">raw SGBM</option></select>
+          <button id="btnBuf" data-tip="Precompute depth into a sliding buffer (30 frames behind to 240 ahead of the cursor, follows playback) so playing with depth is smooth; playback waits for it. Dropped when you choose another log / session / source / mode, or click again.">⚡ Buffer depth</button>
+          <span class="tools">
+            <button data-expand="camTile" data-tip="Expand the camera (Esc to close).">⤢</button>
+            <button data-save="cam" data-tip="Save this frame with its boxes (and depth, if shown) as a PNG.">PNG</button>
+          </span></div>
+        <div class="hd enginebar" id="engineBar"></div>
+        <div class="bd" id="camBody">
+          <div class="camwrap" id="camWrap">
+            <video id="video" muted playsinline preload="auto"></video>
+            <canvas id="depthCv" class="depth" style="display:none"></canvas>
+            <canvas id="ov" class="ov"></canvas>
+          </div>
+          <div class="depthscale" id="depthScale" style="display:none" data-tip="Depth colour scale in metres. Edit the near / far limits; hover the image to read a pixel's depth.">
+            <input id="dMax" type="number" step="1" value="25" data-tip="Far limit (m): this and beyond are drawn in the last colour.">
+            <canvas id="dBar" width="18" height="200"></canvas>
+            <input id="dMin" type="number" step="0.5" value="0" data-tip="Near limit (m).">
+            <span class="muted">m</span>
+          </div>
+          <div class="camstatus" id="camStatus"></div>
+          <div class="camstatus" id="depthNote" style="bottom:28px" data-tip="Where the shown depth comes from."></div>
+          <div class="overlaymsg" id="camMsg"></div>
+        </div>
+      </section>
+    </div>
+    <div class="gutter gv" id="gCols" data-tip="Drag to widen / narrow the map and camera column; double-click to reset."></div>
+    <div class="col" id="charts"></div>
+  </main>
+  <footer>
+    <div class="gutter gh" id="gFoot" style="margin:-6px -10px 2px" data-tip="Drag to make the timebar taller / shorter; double-click to reset."></div>
+    <div class="transport">
+      <button id="btnPlay" data-tip="Play / pause (Space).">▶</button>
+      <button id="btnBack" data-tip="Back one step (←; Shift = 1 s, Alt = 10 s).">⏮</button>
+      <button id="btnFwd" data-tip="Forward one step (→; Shift = 1 s, Alt = 10 s).">⏭</button>
+      <select id="speed" data-tip="Playback speed.">
+        <option>0.25</option><option>0.5</option><option selected>1</option><option>2</option><option>4</option><option>8</option><option>16</option></select>
+      <span class="clock" id="clock" data-tip="Current time: local Singapore time (SGT, UTC+8) and the time since the run started.">--:--:--</span>
+      <span class="grow"></span>
+      <span class="muted" id="viewInfo"></span>
+      <button id="btnResetView" data-tip="Show the whole run on the timebar and the charts (or double-click a chart).">Whole run</button>
+      <button data-save="timebar" data-tip="Save the timebar as a PNG.">PNG</button>
+    </div>
+    <canvas id="timebar"></canvas>
+  </footer>
+</div>
+<div id="lab" class="lab" style="display:none"><div class="labhd" id="labHd"><b>🧪 Mapping lab</b><span class="muted" id="labRun"></span><span class="grow"></span><button id="labClose" data-tip="Close the lab (the lab map stays selectable in the map menu).">✕</button></div><div class="labbd" id="labBd"></div></div>
+<div id="tip"></div>
+<div class="modal" id="modal"><div class="card" id="modalCard"></div></div>
+<div class="modal" id="expandBack"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
