@@ -1,0 +1,85 @@
+{
+ "run": "20261114_153704_m1t2-both_CV",
+ "category": "3_venue/a_good",
+ "start_local_sgt": "2026-11-14T15:37:04+08:00",
+ "mission": "m1t2-both",
+ "cv_tag": true,
+ "note": "lit blue and red lanterns at 17 m (58 lamp reads): rare lamp data, tagged CV by hand [sample: the recording(s) 20261114_154206_obs left out to keep the sample small]",
+ "motion": "boat run (tlog, csv, hub sqlite, mission trace, maps)",
+ "boat": {
+  "profile": "usv_course.yaml",
+  "version": "0.1.94.3",
+  "dur_s": 765,
+  "armed_s": 432,
+  "dist_m": 131,
+  "tasks": [
+   "T1"
+  ],
+  "states": [
+   "AUTO_HOLD",
+   "AUTO_TASK",
+   "BOOT",
+   "KILLED",
+   "MANUAL"
+  ]
+ },
+ "camera": [
+  {
+   "name": "20261114_153724_obs",
+   "frames": 40,
+   "frames_buoy": 40,
+   "ranged": 39,
+   "led_reads": 60,
+   "pose_frames": 32,
+   "pairs": 13,
+   "svo": true,
+   "bytes": 40744171,
+   "colours": {
+    "white": 100,
+    "blue": 14,
+    "black": 53,
+    "green": 2,
+    "unknown": 1
+   },
+   "opts": {
+    "resolution": "hd2k",
+    "fps": 15,
+    "depth_mode": "neural"
+   },
+   "start": "2026-11-14T15:37:24+08:00",
+   "end": "2026-11-14T15:38:00.741411+08:00"
+  }
+ ],
+ "sources": {
+  "nx:run_20261114_153704": {
+   "from": "MASTER_SCRIPTS/logs/jetsons/2026-11-14/nx_pm/run_20261114_153704",
+   "copies": [
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-14/nx_pm/run_20261114_153704"
+   ]
+  },
+  "cam:20261114_153724_obs": {
+   "from": "MASTER_SCRIPTS/logs/jetsons/2026-11-14/agx_pm/recordings/20261114_153724_obs",
+   "copies": [
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-14/agx_pm/recordings/20261114_153724_obs"
+   ]
+  },
+  "ocs:run_20261114_153701": {
+   "from": "MASTER_SCRIPTS/logs/ocs/run_20261114_153701",
+   "copies": [
+    "MASTER_SCRIPTS/logs/ocs/run_20261114_153701"
+   ]
+  },
+  "uav:uavwin_20261114_153703": {
+   "from": "MASTER_SCRIPTS/logs/ocs/uavwin_20261114_153703",
+   "copies": [
+    "MASTER_SCRIPTS/logs/ocs/uavwin_20261114_153703"
+   ]
+  },
+  "macframes:154200_m1t2-both_m1t2_1_20261114_074155": {
+   "from": "MASTER_SCRIPTS/logs/recordings/2026-11-14/154200_m1t2-both_m1t2_1_20261114_074155",
+   "copies": [
+    "MASTER_SCRIPTS/logs/recordings/2026-11-14/154200_m1t2-both_m1t2_1_20261114_074155"
+   ]
+  }
+ }
+}

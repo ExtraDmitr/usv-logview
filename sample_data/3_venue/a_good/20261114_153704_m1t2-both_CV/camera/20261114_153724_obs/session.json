@@ -1,0 +1,41 @@
+{
+ "session": "20261114_153724_obs",
+ "label": "obs",
+ "start_utc": "2026-11-14T07:37:24.214671+00:00",
+ "end_utc": "2026-11-14T07:38:00.741411+00:00",
+ "state": "stopped",
+ "stop_reason": "stopped by the operator (Ctrl-C / agx_record.sh stop)",
+ "frames": 40,
+ "svo": "cam.svo2",
+ "frames_file": "frames.jsonl",
+ "versions": {
+  "kit": "0.1.94.3",
+  "observer": "multi_buoy_observer",
+  "python": "3.10.12",
+  "host": "optiprimeagxorin-desktop",
+  "weights": "/home/optiprime-agxorin/Desktop/dm3/MASTER_SCRIPTS/cv/buoys_multi/../buoys/models/best.engine",
+  "model": null,
+  "zed_sdk": "5.4.1",
+  "camera_model": "ZED 2i",
+  "camera_serial": 33545355,
+  "camera_firmware": 1523
+ },
+ "options": {
+  "resolution": "hd2k",
+  "fps": 15,
+  "depth_mode": "neural",
+  "max_depth": 25.0,
+  "conf": 0.6,
+  "imgsz": 768,
+  "max_buoys": 6,
+  "buoy_radius": 0.2125,
+  "mavlink": "udpin:0.0.0.0:14550",
+  "max_min": 0.0,
+  "min_free_gb": 5.0,
+  "camera_forward_m": 0.0,
+  "camera_right_m": 0.0,
+  "camera_yaw_deg": 0.0
+ },
+ "pid": 68443,
+ "svo_bytes": 39359532
+}

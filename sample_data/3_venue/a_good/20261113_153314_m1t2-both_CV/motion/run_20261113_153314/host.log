@@ -1,0 +1,1 @@
+[host_health] nx -> local/usv/host/nx on 127.0.0.1:1884 every 1 s

@@ -1,0 +1,32 @@
+1794555191: Info: running mosquitto as user: <user>.
+Warning: File /tmp/optiprimex_hub//mosquitto.db group is not staff. Future versions will refuse to load this file.
+1794555191: Restored 176 base messages
+1794555191: Restored 11 retained messages
+1794555191: Restored 3 clients
+1794555191: Restored 12 subscriptions
+1794555191: Restored 165 client messages
+1794555193: New connection from 127.0.0.1:64672 on port 1882.
+1794555193: New client connected from 127.0.0.1:64672 as ocs-app (p4, c1, k15).
+1794555193: New connection from 127.0.0.1:64688 on port 1882.
+1794555193: Client logger-hub [(null):0] disconnected: session taken over.
+1794555193: New client connected from 127.0.0.1:64688 as logger-hub (p4, c0, k15).
+1794555193: New connection from 127.0.0.1:64691 on port 1882.
+1794555193: New client connected from 127.0.0.1:64691 as uav-web-78328 (p4, c1, k15).
+1794555193: New connection from 127.0.0.1:64694 on port 1882.
+1794555193: New client connected from 127.0.0.1:64694 as uav-adapter-78360 (p4, c1, k15).
+1794555194: New connection from 127.0.0.1:64703 on port 1882.
+1794555194: New client connected from 127.0.0.1:64703 as tui-hub-55194 (p4, c1, k10).
+1794555194: New connection from 127.0.0.1:64705 on port 1882.
+1794555194: New client connected from 127.0.0.1:64705 as ocs-cli-27c739 (p4, c1, k15).
+1794555195: New connection from 198.18.0.218:37832 on port 1882.
+1794555195: Client usv-pixhawk.ocs [(null):0] disconnected: session taken over.
+1794555195: New bridge connected from 198.18.0.218:37832 as usv-pixhawk.ocs (p4, c0, k5).
+1794555195: New connection from 127.0.0.1:64740 on port 1882.
+1794555195: New connection from 127.0.0.1:64741 on port 1882.
+1794555195: New client connected from 127.0.0.1:64740 as ocs-cli-d200d6 (p4, c1, k15).
+1794555195: New client connected from 127.0.0.1:64741 as tui-hub-55195 (p4, c1, k10).
+1794555303: Client usv-pixhawk.ocs [198.18.0.218:37832] disconnected: connection closed by client.
+1794555309: Client uav-web-78328 [127.0.0.1:64691] disconnected: connection closed by client.
+1794555309: Client uav-web-78328 [127.0.0.1:64691] disconnected: connection closed by client.
+1794555309: Client tui-hub-55195 [127.0.0.1:64741] disconnected.
+1794555309: Client logger-hub [127.0.0.1:64688] disconnected.

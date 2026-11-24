@@ -1,0 +1,134 @@
+2026-11-14 15:37:03,447 optiprimex.judge INFO rc counters continued from /Users/<user>/Documents/BH1/RobotX/MASTER_SCRIPTS/logs/ocs/rc_seq.json: request 297, reports {'USV1': 87442, 'SGIT-53577': 6914, 'UAV1': 11380}
+2026-11-14 15:37:03,458 optiprimex.ocs INFO mission preselected: T1 {'tier': 'advanced', 'lucky': True} auto=True
+2026-11-14 15:37:03,458 optiprimex.ocs INFO launch preset m1t2-both: declare uav on (ok)
+2026-11-14 15:37:03,458 optiprimex.ocs INFO launch preset m1t2-both: mission m1t2 preselected (auto True), tiers {'T1': 'TIER_ADVANCED', 'T2': 'TIER_NONE', 'T3': 'TIER_NONE', 'T4': 'TIER_CORE'}
+2026-11-14 15:37:03,458 optiprimex.ocs INFO ocs_app started: team SGIT vehicles ['USV1', 'UAV1'] judge=protobuf bench=False
+2026-11-14 15:37:03,460 optiprimex.mqtt INFO ocs-app connected to 127.0.0.1:1882 (7 subscriptions)
+2026-11-14 15:37:03,461 optiprimex.judge INFO judge link up (protobuf) 198.18.2.2:1883 team SGIT
+2026-11-14 15:37:03,461 optiprimex.ocs INFO run: DISCONNECTED -> CONNECTED (RoboCommand link up)
+2026-11-14 15:37:03,463 optiprimex.ocs INFO run: CONNECTED -> COURSE_VALID (course valid)
+2026-11-14 15:37:03,463 optiprimex.ocs INFO course ALPHA accepted (4 boundary points)
+2026-11-14 15:37:03,463 optiprimex.authority INFO cmd -> USV1 COURSE  {'course_id': 'ALPHA', 'boundary': [[1.280998634904762, 103.85479993953993], [1.28086928651841, 103.85499217568193], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144]], 'uav_transit_area': [[1.281394, 103.855107], [1.28127, 103.855296], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144], [1.281394, 103.855107]], 'pinger_hz': 25000, 'uav_geofence': [], 'ceiling_hae_m': 30}
+2026-11-14 15:37:04,598 optiprimex.authority INFO cmd -> UAV1 RC_FORWARD  {'kind': 'course', 'message': {'course_id': 'ALPHA', 'pinger_freq_hz': 25000, 'corners': [{'latitude': 1.280998634904762, 'longitude': 103.85479993953993}, {'latitude': 1.28086928651841, 'longitude': 103.85499217568193}, {'latitude': 1.2810916493526463, 'longitude': 103.85514331770031}, {'latitude': 1.2812147229238349, 'longitude': 103.8549554313144}, {'latitude': 1.280998634904762, 'longitude': 103.85479993953993}], 'sent_at': '2026-11-14T05:30:46.917236Z', 'uav_transit_area': [{'latitude': 1.281394, 'longitude': 103.855107}, {'latitude': 1.28127, 'longitude': 103.855296}, {'latitude': 1.2810916493526463, 'longitude': 103.85514331770031}, {'latitude': 1.2812147229238349, 'longitude': 103.8549554313144}, {'latitude': 1.281394, 'longitude': 103.855107}]}}
+2026-11-14 15:37:04,599 optiprimex.ocs INFO ack UAV1 ACCEPTED BOOT ()
+2026-11-14 15:37:04,614 optiprimex.ocs INFO ack UAV1 DONE BOOT (the Orin has course ALPHA (bf4d6d007ee8))
+2026-11-14 15:37:04,652 optiprimex.authority INFO cmd -> UAV1 UAV_READY  {'on': True}
+2026-11-14 15:37:04,652 optiprimex.ocs INFO UAV pilot ready by itself: pilot ready ON - the UAV's PREPARE can go DONE (6e4d2794)
+2026-11-14 15:37:04,653 optiprimex.ocs INFO ack UAV1 DONE BOOT (pilot ready on)
+2026-11-14 15:37:05,339 optiprimex.authority INFO cmd -> UAV1 FENCE_CHANGE_RESULT  {'id': '1794640096', 'ok': True, 'text': 'the Mission Planner fence: no declaration with the UAV yet - the next declare carries it'}
+2026-11-14 15:37:05,340 optiprimex.ocs INFO ack UAV1 DONE BOOT ()
+2026-11-14 15:37:08,520 optiprimex.ocs WARNING TIMED OUT: command COURSE 198dd6bd TIMED OUT (no ack in 5 s): check the link; repeat deliberately (cmd 198dd6bd-9125-45f8-a9ed-39e8956d6c52 to USV1, intent None)
+2026-11-14 15:37:08,743 optiprimex.authority INFO cmd -> USV1 COURSE  {'course_id': 'ALPHA', 'boundary': [[1.280998634904762, 103.85479993953993], [1.28086928651841, 103.85499217568193], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144]], 'uav_transit_area': [[1.281394, 103.855107], [1.28127, 103.855296], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144], [1.281394, 103.855107]], 'pinger_hz': 25000, 'uav_geofence': [], 'ceiling_hae_m': 30}
+2026-11-14 15:37:08,744 optiprimex.ocs INFO course ALPHA -> USV1 again (not acknowledged by the boat)
+2026-11-14 15:37:09,673 optiprimex.authority INFO cmd -> UAV1 UAV_READY  {'on': True}
+2026-11-14 15:37:09,673 optiprimex.ocs INFO UAV pilot ready by itself: pilot ready ON - the UAV's PREPARE can go DONE (5aaa5e3c)
+2026-11-14 15:37:09,676 optiprimex.ocs INFO ack UAV1 DONE AUTO_HOLD (pilot ready on)
+2026-11-14 15:37:13,748 optiprimex.ocs WARNING TIMED OUT: command COURSE 64d3110b TIMED OUT (no ack in 5 s): check the link; repeat deliberately (cmd 64d3110b-f6e9-47cc-8dc5-e47d8150db6b to USV1, intent None)
+2026-11-14 15:37:14,777 optiprimex.authority INFO cmd -> USV1 COURSE  {'course_id': 'ALPHA', 'boundary': [[1.280998634904762, 103.85479993953993], [1.28086928651841, 103.85499217568193], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144]], 'uav_transit_area': [[1.281394, 103.855107], [1.28127, 103.855296], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144], [1.281394, 103.855107]], 'pinger_hz': 25000, 'uav_geofence': [], 'ceiling_hae_m': 30}
+2026-11-14 15:37:14,777 optiprimex.ocs INFO course ALPHA -> USV1 again (not acknowledged by the boat)
+2026-11-14 15:37:14,843 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL ()
+2026-11-14 15:37:14,850 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:37:28,979 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.25}
+2026-11-14 15:37:29,176 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.25 · circle x1 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:37:29,176 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:37:29,580 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.25}
+2026-11-14 15:37:30,005 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.25 · circle x1 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:37:30,006 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:37:30,170 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.5}
+2026-11-14 15:37:30,707 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:37:30,707 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:40:55,150 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'circle': 1.25}
+2026-11-14 15:40:56,141 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1.25 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:40:56,175 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:40:56,822 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'circle': 1.5}
+2026-11-14 15:40:56,947 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1.5 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:40:56,970 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:40:58,322 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'gate': 1.25}
+2026-11-14 15:40:58,431 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1.5 · gate x1.25 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:40:58,431 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:40:59,932 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'gate': 1.5}
+2026-11-14 15:41:00,043 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1.5 · gate x1.5 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:00,061 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:05,271 optiprimex.authority INFO cmd -> USV1 SET_STATION_KEEP  {'mode': 'loiter'}
+2026-11-14 15:41:05,459 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (station keep LOITER (a real position hold - AUTO_HOLD and every stage that holds; the safe hold stays HOLD))
+2026-11-14 15:41:05,459 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:14,470 optiprimex.authority INFO cmd -> USV1 SET_STATION_KEEP  {'mode': 'hold'}
+2026-11-14 15:41:14,542 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (station keep HOLD (motors neutral, drifting))
+2026-11-14 15:41:14,549 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:29,360 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.0, 'circle': 1.0, 'gate': 1.0}
+2026-11-14 15:41:29,444 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1 · circle x1 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:29,447 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:30,806 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.25}
+2026-11-14 15:41:32,388 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.25 · circle x1 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:32,388 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:32,397 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.25}
+2026-11-14 15:41:32,548 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.25 · circle x1 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:32,548 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:33,110 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.5}
+2026-11-14 15:41:33,154 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:33,156 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:34,936 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'circle': 1.25}
+2026-11-14 15:41:35,050 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1.25 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:35,052 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:36,050 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'circle': 1.5}
+2026-11-14 15:41:36,194 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1.5 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:36,270 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:37,302 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'circle': 1.75}
+2026-11-14 15:41:37,344 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.5 · circle x1.75 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:37,355 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:38,270 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'cruise': 1.75}
+2026-11-14 15:41:38,348 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.75 · circle x1.75 · gate x1 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:38,365 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:39,312 optiprimex.authority INFO cmd -> USV1 SET_SPEED_K  {'gate': 1.25}
+2026-11-14 15:41:39,440 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (speed cruise x1.75 · circle x1.75 · gate x1.25 (at once; cap 0.6 m/s x k, max 1.5))
+2026-11-14 15:41:39,468 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:44,299 optiprimex.authority INFO cmd -> USV1 SET_STATION_KEEP  {'mode': 'loiter'}
+2026-11-14 15:41:44,673 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (station keep LOITER (a real position hold - AUTO_HOLD and every stage that holds; the safe hold stays HOLD))
+2026-11-14 15:41:44,674 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:41:45,755 optiprimex.authority INFO cmd -> USV1 ENABLE_AUTO  
+2026-11-14 15:41:45,858 optiprimex.ocs INFO ack USV1 ACCEPTED AUTO_HOLD ()
+2026-11-14 15:41:45,858 optiprimex.ocs INFO ack USV1 DONE AUTO_HOLD ()
+2026-11-14 15:41:55,126 optiprimex.authority INFO cmd -> USV1 PREPARE  {'declaration_seq': 1, 'tiers': {'T1': 'TIER_ADVANCED', 'T2': 'TIER_NONE', 'T3': 'TIER_NONE', 'T4': 'TIER_CORE'}, 'course': {'course_id': 'ALPHA', 'pinger_hz': 25000, 'boundary': [[1.280998634904762, 103.85479993953993], [1.28086928651841, 103.85499217568193], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144]], 'uav_transit_area': [[1.281394, 103.855107], [1.28127, 103.855296], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144], [1.281394, 103.855107]], 'published_at': 1794634246.917236}}
+2026-11-14 15:41:55,126 optiprimex.authority INFO cmd -> UAV1 PREPARE  {'declaration_seq': 1, 'tiers': {'T1': 'TIER_ADVANCED', 'T2': 'TIER_NONE', 'T3': 'TIER_NONE', 'T4': 'TIER_CORE'}, 'course': {'course_id': 'ALPHA', 'pinger_hz': 25000, 'boundary': [[1.280998634904762, 103.85479993953993], [1.28086928651841, 103.85499217568193], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144]], 'uav_transit_area': [[1.281394, 103.855107], [1.28127, 103.855296], [1.2810916493526463, 103.85514331770031], [1.2812147229238349, 103.8549554313144], [1.281394, 103.855107]], 'published_at': 1794634246.917236}}
+2026-11-14 15:41:55,129 optiprimex.ocs INFO ack UAV1 ACCEPTED AUTO_HOLD ()
+2026-11-14 15:41:55,129 optiprimex.ocs INFO ack UAV1 DONE AUTO_HOLD (UAV ready: telemetry fresh, disarmed, fence valid, pilot ready)
+2026-11-14 15:41:55,182 optiprimex.ocs INFO ack USV1 ACCEPTED AUTO_HOLD ()
+2026-11-14 15:41:55,182 optiprimex.ocs INFO ack USV1 DONE AUTO_HOLD ()
+2026-11-14 15:41:55,182 optiprimex.ocs INFO run: COURSE_VALID -> DECLARED (RunDeclaration published)
+2026-11-14 15:41:55,184 optiprimex.ocs INFO R3: declaration 1 published after PREPARE acks
+2026-11-14 15:41:55,524 optiprimex.ocs INFO run: DECLARED -> READY (all declared vehicles STATE_AUTO)
+2026-11-14 15:43:26,543 optiprimex.ocs INFO run: READY -> RUNNING (RunStart)
+2026-11-14 15:43:26,544 optiprimex.authority INFO cmd -> USV1 START_RUN  {'run_id': 1}
+2026-11-14 15:43:26,544 optiprimex.authority INFO cmd -> UAV1 START_RUN  {'run_id': 1, 'uav_task': '1'}
+2026-11-14 15:43:26,544 optiprimex.authority INFO cmd -> UAV1 RC_FORWARD  {'kind': 'command', 'message': {'team_id': 'SGIT', 'seq': 1, 'sent_at': '2026-11-14T07:43:26.555280Z', 'run_start': {'declaration_seq': 298, 'run_id': 1}}, 'which': 'run_start'}
+2026-11-14 15:43:26,544 optiprimex.ocs WARNING ALERT mission_countdown {'task': 'T1', 'code': 'm1t2', 's': 3.0, 'action': 'cancel_auto / hold_on_start during the count'}
+2026-11-14 15:43:26,546 optiprimex.ocs INFO ack UAV1 DONE AUTO_HOLD (run 1)
+2026-11-14 15:43:26,546 optiprimex.ocs INFO ack UAV1 ACCEPTED AUTO_HOLD ()
+2026-11-14 15:43:26,565 optiprimex.ocs INFO ack UAV1 DONE AUTO_HOLD (the Orin has command #1 run_start)
+2026-11-14 15:43:26,641 optiprimex.ocs INFO ack USV1 ACCEPTED AUTO_HOLD ()
+2026-11-14 15:43:26,643 optiprimex.ocs INFO ack USV1 DONE AUTO_HOLD ()
+2026-11-14 15:43:29,577 optiprimex.authority INFO cmd -> USV1 START_TASK T1 {'tier': 'advanced', 'lucky': True}
+2026-11-14 15:43:29,577 optiprimex.ocs WARNING ALERT mission_started {'task': 'T1', 'code': 'm1t2', 'why': None, 'run_id': 1, 'hold': False}
+2026-11-14 15:43:29,659 optiprimex.ocs INFO ack USV1 ACCEPTED AUTO_TASK ()
+2026-11-14 15:43:29,660 optiprimex.ocs INFO ack USV1 DONE AUTO_TASK ()
+2026-11-14 15:44:56,449 optiprimex.authority INFO cmd -> USV1 ABORT_TASK  
+2026-11-14 15:44:56,561 optiprimex.ocs INFO ack USV1 ACCEPTED AUTO_HOLD ()
+2026-11-14 15:44:56,561 optiprimex.ocs INFO ack USV1 DONE AUTO_HOLD ()
+2026-11-14 15:44:56,973 optiprimex.authority INFO cmd -> USV1 DISABLE_AUTO  
+2026-11-14 15:44:57,051 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL ()
+2026-11-14 15:44:57,051 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:44:57,567 optiprimex.authority INFO cmd -> USV1 FCU_MODE  {'mode': 'HOLD'}
+2026-11-14 15:44:57,696 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (FCU mode HOLD)
+2026-11-14 15:44:57,697 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:44:57,697 optiprimex.authority INFO cmd -> USV1 FCU_ARM  {'on': False}
+2026-11-14 15:44:57,872 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (FCU DISARMED)
+2026-11-14 15:44:57,890 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:44:57,891 optiprimex.authority INFO cmd -> USV1 RESET  
+2026-11-14 15:44:57,891 optiprimex.authority INFO cmd -> UAV1 RESET  
+2026-11-14 15:44:57,891 optiprimex.ocs INFO run: RUNNING -> COURSE_VALID (reset by the operator: run context dropped)
+2026-11-14 15:44:57,892 optiprimex.ocs INFO ack UAV1 DONE AUTO_TASK (pilot ready cleared)
+2026-11-14 15:44:57,951 optiprimex.ocs INFO ack USV1 ACCEPTED MANUAL (run context dropped)
+2026-11-14 15:44:57,952 optiprimex.ocs INFO ack USV1 DONE MANUAL ()
+2026-11-14 15:44:58,195 optiprimex.authority INFO cmd -> UAV1 UAV_READY  {'on': True}
+2026-11-14 15:44:58,195 optiprimex.ocs INFO UAV pilot ready by itself: pilot ready ON - the UAV's PREPARE can go DONE (ed04359b)
+2026-11-14 15:44:58,196 optiprimex.ocs INFO ack UAV1 DONE AUTO_HOLD (pilot ready on)

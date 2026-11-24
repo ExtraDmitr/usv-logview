@@ -1,0 +1,23 @@
+1794641825: Connecting bridge (step 1) ocs (198.18.0.13:1882)
+1794641825: Connecting bridge (step 2) ocs (198.18.0.13:1882)
+1794641825: New connection from 198.18.0.6:57798 on port 1884.
+1794641825: New client connected from 198.18.0.6:57798 as tui-boat-41825 (p2, c1, k10).
+1794641826: New connection from 127.0.0.1:49863 on port 1884.
+1794641826: New client connected from 127.0.0.1:49863 as usv_ui-20556 (p2, c1, k15).
+1794641828: New connection from 198.18.0.6:57816 on port 1884.
+1794641828: New client connected from 198.18.0.6:57816 as tui-boat-41824 (p2, c1, k10).
+1794641828: New connection from 127.0.0.1:50561 on port 1884.
+1794641828: New client connected from 127.0.0.1:50561 as usv-mm (p2, c1, k15).
+1794641829: New connection from 127.0.0.1:50207 on port 1884.
+1794641829: New client connected from 127.0.0.1:50207 as host-health-nx-20693 (p2, c1, k15).
+1794641829: New connection from 127.0.0.1:57019 on port 1884.
+1794641829: New client connected from 127.0.0.1:57019 as logger-boat (p2, c0, k15).
+1794641829: New connection from 127.0.0.1:53173 on port 1884.
+1794641829: New client connected from 127.0.0.1:53173 as boat-web-ec8deec9 (p2, c1, k15).
+1794641832: New connection from 198.18.0.99:59181 on port 1884.
+1794641832: New client connected from 198.18.0.99:59181 as cv-publish-68357 (p2, c1, k15).
+1794641832: New connection from 198.18.0.99:37135 on port 1884.
+1794641832: New client connected from 198.18.0.99:37135 as host-health-agx-68385 (p2, c1, k15).
+1794642594: Client boat-web-ec8deec9 disconnected.
+1794642595: Client usv_ui-20556 disconnected.
+1794642597: Client logger-boat disconnected.

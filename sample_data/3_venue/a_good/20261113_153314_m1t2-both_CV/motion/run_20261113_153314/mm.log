@@ -1,0 +1,16 @@
+2026-11-13 15:33:18,373 optiprimex.mm INFO map recording -> /home/usv-pixhawk/Desktop/dm3/MASTER_SCRIPTS/logs/usv/run_20261113_153314/maps
+2026-11-13 15:33:18,373 optiprimex.mm INFO command trace -> /home/usv-pixhawk/Desktop/dm3/MASTER_SCRIPTS/logs/usv/run_20261113_153314/mm_trace.jsonl
+2026-11-13 15:33:18,377 optiprimex.mm INFO mission manager started: USV1 on udpin:127.0.0.1:14551, broker 127.0.0.1:1884
+2026-11-13 15:33:18,384 optiprimex.mqtt INFO usv-mm connected to 127.0.0.1:1884 (9 subscriptions)
+2026-11-13 15:33:18,478 optiprimex.mm INFO control origin set at 1.280875 103.855510
+2026-11-13 15:33:19,880 optiprimex.mm INFO vehicle vehicle: BOOT -> MANUAL (FCU link up)
+2026-11-13 15:33:43,780 optiprimex.mm INFO vehicle vehicle: MANUAL -> AUTO_HOLD (ENABLE_AUTO)
+2026-11-13 15:34:35,280 optiprimex.mm INFO T1 started: planner simple, circles r 3.0 m at 0.12 m/s - m1t2: colour from the UAV, WAIT_UAV_MAP first
+2026-11-13 15:34:35,280 optiprimex.mm INFO vehicle vehicle: AUTO_HOLD -> AUTO_TASK (START_TASK)
+2026-11-13 15:34:35,282 optiprimex.mm INFO T1 started: planner simple, circles r 3.0 m at 0.12 m/s - m1t2: colour from the UAV, WAIT_UAV_MAP first
+2026-11-13 15:34:35,282 optiprimex.tasks INFO task T1 started in WAIT_START
+2026-11-13 15:34:35,286 optiprimex.mm INFO task T1: WAIT_START -> WAIT_UAV_MAP (m1t2: the UAV surveys first (handbook 3.3.2 Advanced))
+2026-11-13 15:34:35,288 optiprimex.mm INFO move-first: skipped - an object 3.1 m ahead (bow-clear); the turn rule applies
+2026-11-13 15:34:55,580 optiprimex.mm INFO vehicle vehicle: AUTO_TASK -> AUTO_HOLD (ABORT_TASK)
+2026-11-13 15:34:55,582 optiprimex.mm INFO task T1: WAIT_UAV_MAP -> ABORTED (ABORT_TASK)
+2026-11-13 15:34:55,880 optiprimex.mm INFO vehicle vehicle: AUTO_HOLD -> MANUAL (DISABLE_AUTO)

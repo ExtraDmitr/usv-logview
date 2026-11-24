@@ -1,0 +1,20 @@
+{
+ "label": "m1t2-both_m1t2_1_20261113_073347",
+ "root": "mac_logs",
+ "dir": "/Users/<user>/Documents/BH1/RobotX/MASTER_SCRIPTS/logs/recordings/2026-11-13/153348_m1t2-both_m1t2_1_20261113_073347",
+ "hz": 2.0,
+ "max_min": 0.0,
+ "depth": false,
+ "cam": "http://198.18.0.99:8090/",
+ "t0": 1794555228.161495,
+ "frames": 91,
+ "repeats": 47,
+ "misses": 0,
+ "bytes": 5630118,
+ "why": "stopped",
+ "depth_frames": 0,
+ "depth_misses": 0,
+ "t1": 1794555297.424916,
+ "version": "0.1.93.2",
+ "format": "jpeg frames + frames.jsonl (v0.1.60)"
+}

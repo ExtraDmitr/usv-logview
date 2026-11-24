@@ -7,7 +7,10 @@ import csv, datetime as dt, glob, json, math, os, re, subprocess, threading
 # Where things are (override with environment variables): LOGVIEW_DATA = the DATASETS folder (default: two levels up, i.e. this tool
 # lives in DATASETS/_tools/logview); ROBOTX = the folder holding DATASETS and MASTER_SCRIPTS; MASTER_SCRIPTS = the team's code (the mapping
 # lab and the lamp reader import it). engines.json may use ${DATASETS}, ${ROBOTX}, ${MASTER_SCRIPTS}.
-DATASETS = os.path.abspath(os.environ.get("LOGVIEW_DATA") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+_HERE = os.path.dirname(os.path.abspath(__file__))
+DATASETS = os.path.abspath(os.environ.get("LOGVIEW_DATA") or next(
+    (p for p in (os.path.join(_HERE, "..", ".."), os.path.join(_HERE, "sample_data")) if os.path.exists(os.path.join(p, "index.csv"))),
+    os.path.join(_HERE, "..", "..")))                             # a fresh clone of the repo: its sample_data/
 os.environ.setdefault("DATASETS", DATASETS)
 os.environ.setdefault("ROBOTX", os.path.dirname(DATASETS))
 os.environ.setdefault("MASTER_SCRIPTS", os.path.join(os.environ["ROBOTX"], "MASTER_SCRIPTS"))
@@ -212,7 +215,8 @@ def load_run(rel):
     # camera sessions
     for sd in sorted(G("camera", "*")):
         fr = os.path.join(sd, "frames.jsonl")
-        c = {"name": os.path.basename(sd), "svo": bool(glob.glob(os.path.join(sd, "*.svo2"))), "frames": [], "obs_t": [], "obs_n": []}
+        c = {"name": os.path.basename(sd), "svo": bool(glob.glob(os.path.join(sd, "*.svo2")) or glob.glob(os.path.join(sd, "*.svo2.part00"))),
+             "frames": [], "obs_t": [], "obs_n": []}
         if os.path.exists(os.path.join(sd, "session.json")):
             s = json.load(open(os.path.join(sd, "session.json")))
             c["opts"] = s.get("options", {}); c["model"] = (s.get("versions") or {}).get("weights")
@@ -311,8 +315,27 @@ DEFAULT_SDK = {"scale": 1.0035, "rot_deg": -0.08, "dx_frac": 3.2 / 960, "dy_frac
 
 
 def _svo(sd):
+    """The session's .svo2; one split into parts (cam.svo2.part00, part01 ... - the repo's sample data, GitHub's 100 MB limit) is joined
+    once into the cache folder."""
     f = glob.glob(os.path.join(sd, "*.svo2"))
-    return f[0] if f else None
+    if f:
+        return f[0]
+    parts = sorted(glob.glob(os.path.join(sd, "*.svo2.part[0-9][0-9]")))
+    if not parts:
+        return None
+    joined = os.path.join(sd, CACHE, os.path.basename(parts[0])[:-len(".part00")])
+    if not os.path.exists(joined) or os.path.getsize(joined) != sum(os.path.getsize(p) for p in parts):
+        os.makedirs(os.path.dirname(joined), exist_ok=True)
+        with open(joined + ".part", "wb") as out:
+            for p in parts:
+                with open(p, "rb") as fh:
+                    while True:
+                        b = fh.read(1 << 22)
+                        if not b:
+                            break
+                        out.write(b)
+        os.replace(joined + ".part", joined)
+    return joined
 
 
 def cache_paths(sd, eye="left"):
@@ -462,9 +485,10 @@ def build_video(sd, eye="left"):
     """Build the cache streams one eye needs (runs in a thread; progress in _jobs[(sd, eye)])."""
     key = (sd, eye)
     try:
-        if not _index(sd):                                        # an old (v1) cache: rebuilt from scratch
-            import shutil
-            shutil.rmtree(os.path.join(sd, CACHE), ignore_errors=True)
+        if not _index(sd):                                        # an old (v1) or no cache: its videos / index rebuilt from scratch
+            for f in glob.glob(os.path.join(sd, CACHE, "*")):
+                if not f.endswith(".svo2"):                       # keep a joined recording (split sample data)
+                    os.remove(f)
         base = "right" if eye in ("right", "right_raw") else "left"
         if not os.path.exists(cache_paths(sd, base + "_raw")[1]) or not _index(sd).get("ts"):
             _extract_raw_eye(sd, base, key)
@@ -481,7 +505,7 @@ def video_status(sd, eye="left", start=False):
     _, mp4, _ = cache_paths(sd, eye)
     if os.path.exists(mp4) and _index(sd).get("ts"):
         return {"state": "ready"}
-    if not _svo(sd):
+    if not (glob.glob(os.path.join(sd, "*.svo2")) or glob.glob(os.path.join(sd, "*.svo2.part00"))):     # cheap: no joining here
         return {"state": "none"}
     with _lock:
         j = _jobs.get(key)

@@ -1,0 +1,8 @@
+[cv_publish] network.env: /home/optiprime-agxorin/Desktop/dm3/MASTER_SCRIPTS/network.env, profile lan (BOAT_HOST 198.18.0.218)
+[cv_publish] watching /home/optiprime-agxorin/Desktop/dm3/MASTER_SCRIPTS/cv/buoys/runs for the newest run (latest_status.json)
+[cv_publish] run dir: /home/optiprime-agxorin/Desktop/dm3/MASTER_SCRIPTS/cv/buoys/runs/20261113_153123
+[cv_publish] frame 80 BEARING_ONLY -> 6 item(s), n_published 1
+[cv_publish] connected to 198.18.0.218:1884
+[cv_publish] run dir: /home/optiprime-agxorin/Desktop/dm3/MASTER_SCRIPTS/cv/buoys/runs/20261113_153325
+[cv_publish] frame 48 BEARING_ONLY -> 6 item(s), n_published 50
+[cv_publish] frame 98 BUOY_DEPTH_OK_GPS_UNAVAILABLE -> 5 item(s), n_published 100

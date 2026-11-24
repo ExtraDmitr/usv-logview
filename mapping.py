@@ -57,6 +57,11 @@ def _load_mods():
         return _mods
     if MS not in sys.path:
         sys.path.insert(0, MS)
+    try:
+        import optiprimex  # noqa: F401
+    except ImportError:
+        raise RuntimeError(f"the mapping lab needs the team's code (OPTIPRIME-SIT/USV-master-scripts) - not found at {MS}; "
+                           "set MASTER_SCRIPTS=/path/to/MASTER_SCRIPTS and restart") from None
     from optiprimex.companion import config as C
     from optiprimex.companion.frames import ControlOrigin
     from optiprimex.companion.state import LocalPose, Observation, ObsItem

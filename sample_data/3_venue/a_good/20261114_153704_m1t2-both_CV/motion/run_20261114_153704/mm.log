@@ -1,0 +1,44 @@
+2026-11-14 15:37:08,727 optiprimex.mm INFO map recording -> /home/usv-pixhawk/Desktop/dm3/MASTER_SCRIPTS/logs/usv/run_20261114_153704/maps
+2026-11-14 15:37:08,728 optiprimex.mm INFO command trace -> /home/usv-pixhawk/Desktop/dm3/MASTER_SCRIPTS/logs/usv/run_20261114_153704/mm_trace.jsonl
+2026-11-14 15:37:08,732 optiprimex.mm INFO mission manager started: USV1 on udpin:127.0.0.1:14551, broker 127.0.0.1:1884
+2026-11-14 15:37:08,739 optiprimex.mqtt INFO usv-mm connected to 127.0.0.1:1884 (9 subscriptions)
+2026-11-14 15:37:08,935 optiprimex.mm INFO control origin set at 1.281230 103.855132
+2026-11-14 15:37:09,536 optiprimex.mm INFO vehicle vehicle: BOOT -> MANUAL (FCU link up)
+2026-11-14 15:37:29,036 optiprimex.cmd INFO speed knobs cruise x1.25 · circle x1 · gate x1
+2026-11-14 15:37:29,636 optiprimex.cmd INFO speed knobs cruise x1.25 · circle x1 · gate x1
+2026-11-14 15:37:30,236 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1 · gate x1
+2026-11-14 15:37:45,336 optiprimex.mm INFO vehicle vehicle: MANUAL -> KILLED (RC5 E-stop)
+2026-11-14 15:37:46,336 optiprimex.mm INFO vehicle vehicle: KILLED -> MANUAL (kill cleared and operator confirmed)
+2026-11-14 15:38:07,136 optiprimex.mm INFO vehicle vehicle: MANUAL -> KILLED (RC5 E-stop)
+2026-11-14 15:38:07,936 optiprimex.mm INFO vehicle vehicle: KILLED -> MANUAL (kill cleared and operator confirmed)
+2026-11-14 15:38:39,736 optiprimex.mm INFO vehicle vehicle: MANUAL -> KILLED (RC5 E-stop)
+2026-11-14 15:38:40,736 optiprimex.mm INFO vehicle vehicle: KILLED -> MANUAL (kill cleared and operator confirmed)
+2026-11-14 15:40:41,936 optiprimex.mm INFO vehicle vehicle: MANUAL -> KILLED (RC5 E-stop)
+2026-11-14 15:40:42,736 optiprimex.mm INFO vehicle vehicle: KILLED -> MANUAL (kill cleared and operator confirmed)
+2026-11-14 15:40:56,136 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1.25 · gate x1
+2026-11-14 15:40:56,937 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1.5 · gate x1
+2026-11-14 15:40:58,337 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1.5 · gate x1.25
+2026-11-14 15:41:00,037 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1.5 · gate x1.5
+2026-11-14 15:41:29,437 optiprimex.cmd INFO speed knobs cruise x1 · circle x1 · gate x1
+2026-11-14 15:41:32,236 optiprimex.cmd INFO speed knobs cruise x1.25 · circle x1 · gate x1
+2026-11-14 15:41:32,536 optiprimex.cmd INFO speed knobs cruise x1.25 · circle x1 · gate x1
+2026-11-14 15:41:33,137 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1 · gate x1
+2026-11-14 15:41:35,037 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1.25 · gate x1
+2026-11-14 15:41:36,137 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1.5 · gate x1
+2026-11-14 15:41:37,336 optiprimex.cmd INFO speed knobs cruise x1.5 · circle x1.75 · gate x1
+2026-11-14 15:41:38,337 optiprimex.cmd INFO speed knobs cruise x1.75 · circle x1.75 · gate x1
+2026-11-14 15:41:39,437 optiprimex.cmd INFO speed knobs cruise x1.75 · circle x1.75 · gate x1.25
+2026-11-14 15:41:45,836 optiprimex.mm INFO vehicle vehicle: MANUAL -> AUTO_HOLD (ENABLE_AUTO)
+2026-11-14 15:43:29,637 optiprimex.mm INFO T1 started: planner simple, circles r 3.0 m at 0.12 m/s - m1t2: colour from the UAV, WAIT_UAV_MAP first
+2026-11-14 15:43:29,637 optiprimex.mm INFO vehicle vehicle: AUTO_HOLD -> AUTO_TASK (START_TASK)
+2026-11-14 15:43:29,639 optiprimex.mm INFO T1 started: planner simple, circles r 3.0 m at 0.12 m/s - m1t2: colour from the UAV, WAIT_UAV_MAP first
+2026-11-14 15:43:29,639 optiprimex.tasks INFO task T1 started in WAIT_START
+2026-11-14 15:43:29,641 optiprimex.mm INFO task T1: WAIT_START -> WAIT_UAV_MAP (m1t2: the UAV surveys first (handbook 3.3.2 Advanced))
+2026-11-14 15:43:29,645 optiprimex.mm INFO move-first: skipped - an object -0.1 m ahead (bow-clear); the turn rule applies
+2026-11-14 15:44:56,537 optiprimex.mm INFO vehicle vehicle: AUTO_TASK -> AUTO_HOLD (ABORT_TASK)
+2026-11-14 15:44:56,538 optiprimex.mm INFO task T1: WAIT_UAV_MAP -> ABORTED (ABORT_TASK)
+2026-11-14 15:44:57,036 optiprimex.mm INFO vehicle vehicle: AUTO_HOLD -> MANUAL (DISABLE_AUTO)
+2026-11-14 15:46:18,937 optiprimex.mm INFO vehicle vehicle: MANUAL -> KILLED (RC5 E-stop)
+2026-11-14 15:46:19,736 optiprimex.mm INFO vehicle vehicle: KILLED -> MANUAL (kill cleared and operator confirmed)
+2026-11-14 15:49:50,735 optiprimex.mm INFO vehicle vehicle: MANUAL -> KILLED (RC5 E-stop)
+2026-11-14 15:49:51,536 optiprimex.mm INFO vehicle vehicle: KILLED -> MANUAL (kill cleared and operator confirmed)

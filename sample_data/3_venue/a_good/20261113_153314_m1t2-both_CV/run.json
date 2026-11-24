@@ -1,0 +1,91 @@
+{
+ "run": "20261113_153314_m1t2-both_CV",
+ "category": "3_venue/a_good",
+ "start_local_sgt": "2026-11-13T15:33:14+08:00",
+ "mission": "m1t2-both",
+ "cv_tag": true,
+ "note": "",
+ "motion": "boat run (tlog, csv, hub sqlite, mission trace, maps)",
+ "boat": {
+  "profile": "usv_course.yaml",
+  "version": "0.1.93.2",
+  "dur_s": 99,
+  "armed_s": 34,
+  "dist_m": 7,
+  "tasks": [
+   "T1"
+  ],
+  "states": [
+   "AUTO_HOLD",
+   "AUTO_TASK",
+   "BOOT",
+   "MANUAL"
+  ]
+ },
+ "camera": [
+  {
+   "name": "20261113_153327_obs",
+   "frames": 130,
+   "frames_buoy": 129,
+   "ranged": 16,
+   "led_reads": 138,
+   "pose_frames": 97,
+   "pairs": 31,
+   "svo": true,
+   "bytes": 122631609,
+   "colours": {
+    "white": 644,
+    "black": 11
+   },
+   "opts": {
+    "resolution": "hd1080",
+    "fps": 15,
+    "depth_mode": "neural_light"
+   },
+   "start": "2026-11-13T15:33:27+08:00",
+   "end": "2026-11-13T15:35:06.037081+08:00"
+  }
+ ],
+ "sources": {
+  "nx:run_20261113_153314": {
+   "from": "MASTER_SCRIPTS/logs/jetsons/2026-11-14/nx/logs/usv/run_20261113_153314",
+   "copies": [
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-14/nx/logs/usv/run_20261113_153314",
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-13/nx/logs/usv/run_20261113_153314",
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-13/run_pm/nx/run_20261113_153314"
+   ]
+  },
+  "cam:20261113_153327_obs": {
+   "from": "MASTER_SCRIPTS/logs/jetsons/2026-11-13/agx/recordings/20261113_153327_obs",
+   "copies": [
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-13/agx/recordings/20261113_153327_obs",
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-13/run_pm/agx/20261113_153327_obs"
+   ]
+  },
+  "ocs:run_20261113_153310": {
+   "from": "MASTER_SCRIPTS/logs/ocs/run_20261113_153310",
+   "copies": [
+    "MASTER_SCRIPTS/logs/ocs/run_20261113_153310"
+   ]
+  },
+  "uav:uavwin_20261113_153312": {
+   "from": "MASTER_SCRIPTS/logs/ocs/uavwin_20261113_153312",
+   "copies": [
+    "MASTER_SCRIPTS/logs/ocs/uavwin_20261113_153312"
+   ]
+  },
+  "agxlog:run_20261113_153319": {
+   "from": "MASTER_SCRIPTS/logs/jetsons/2026-11-14/agx/tree_logs/agx/run_20261113_153319",
+   "copies": [
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-14/agx/tree_logs/agx/run_20261113_153319",
+    "MASTER_SCRIPTS/logs/jetsons/2026-11-13/agx/tree_logs/agx/run_20261113_153319"
+   ]
+  },
+  "macframes:153348_m1t2-both_m1t2_1_20261113_073347": {
+   "from": "MASTER_SCRIPTS/logs/recordings/2026-11-13/153348_m1t2-both_m1t2_1_20261113_073347",
+   "copies": [
+    "MASTER_SCRIPTS/logs/recordings/2026-11-13/153348_m1t2-both_m1t2_1_20261113_073347"
+   ]
+  }
+ }
+}

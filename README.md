@@ -24,8 +24,24 @@ boat's recorded detections, telemetry, and the timebar (FCU mode, armed, mission
 ```bash
 git clone https://github.com/ExtraDmitr/usv-logview.git
 cd usv-logview
-LOGVIEW_DATA=/path/to/DATASETS ./run.sh          # first start builds .venv (a few minutes); opens http://127.0.0.1:8770/
+./run.sh                                          # opens the included sample (first start builds .venv, a few minutes)
+LOGVIEW_DATA=/path/to/DATASETS ./run.sh           # your own data; http://127.0.0.1:8770/
 ```
+
+### Sample data (`sample_data/`, ≈ 335 MB)
+
+Two Task 1 attempts from the venue, both with the drone (m1t2), both tagged good for CV:
+
+| run | what | camera |
+|---|---|---|
+| `20261113_153314_m1t2-both_CV` | 13 Nov 15:33, 99 s; lanterns read 138 times | 130 frames, hd2k, recorded neural depth on some frames |
+| `20261114_153704_m1t2-both_CV` | 14 Nov 15:37, the final day; **lit blue and red lanterns** at ~17 m | the 35 s lantern recording (the run's second, 3 min of mostly empty water, is left out) |
+
+Each run has the boat's telemetry (csv, tlog, events, mission trace, its sqlite and map recording), the operator station's log and map,
+and the ZED recording. Prepared for publishing: network addresses are replaced with stand-ins from the 198.18.0.0/15 test range (per
+subnet, so the structure stays) and the local user name is removed - in the text logs and inside the sqlite databases; files over 95 MB
+are split (`cam.svo2.part00`, `part01`) and joined by the viewer on first use. What needs assets that are not here: the mapping lab and
+the lamp reader (the team repo), the YOLO / CV_NEW engines (model weights) - they show as not available.
 
 Needs Python 3.10+ and `ffmpeg` (`brew install ffmpeg` / `apt install ffmpeg`; on a Mac the video cache uses the hardware encoder, elsewhere
 libx264). Options: `--port N`, `--no-browser`. Stop it with **✕ Close** in the page or Ctrl-C. `.venv/bin/python selftest.py` checks
@@ -49,7 +65,7 @@ A `DATASETS` folder with `index.csv` (one row per run: category, run, date, star
 ```
 
 Boat-console sessions (`<stem>.csv` + `.events` + `.tlog`) anywhere in DATASETS are listed too. The viewer writes only
-`camera/*/.logview_cache/` (video caches, rebuilt on demand). The logs themselves are not in this repository.
+`camera/*/.logview_cache/` (video caches, rebuilt on demand). Apart from the two sample runs, the logs are not in this repository (the full set is ≈ 27 GB).
 
 ## Details
 

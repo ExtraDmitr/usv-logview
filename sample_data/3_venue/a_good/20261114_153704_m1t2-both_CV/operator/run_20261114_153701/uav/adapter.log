@@ -1,0 +1,7 @@
+2026-11-14 15:37:04,092 optiprimex.uav INFO uav_adapter: UAV1 (uav) <-> listener 198.18.0.153:14600, bound ('0.0.0.0', 14605)
+2026-11-14 15:37:04,093 optiprimex.mqtt INFO uav-adapter-65230 connected to 127.0.0.1:1882 (2 subscriptions)
+2026-11-14 15:37:04,653 optiprimex.uav INFO uav: pilot ready ON
+2026-11-14 15:37:05,336 optiprimex.uav INFO uav: fence change 1794640096: 6 points -> the OCS
+2026-11-14 15:37:09,676 optiprimex.uav INFO uav: pilot ready ON
+2026-11-14 15:44:58,196 optiprimex.uav INFO uav: pilot ready ON
+2026-11-14 15:50:03,673 optiprimex.mqtt INFO uav-adapter-65230 disconnected (Unspecified error)

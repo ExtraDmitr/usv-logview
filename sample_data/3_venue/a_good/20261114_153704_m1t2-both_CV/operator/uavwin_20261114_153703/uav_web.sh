@@ -1,0 +1,1 @@
+cd '/Users/<user>/Documents/BH1/RobotX/MASTER_SCRIPTS' && UAV_WINDOW_PIN='' '/Users/<user>/Documents/BH1/RobotX/MASTER_SCRIPTS/.venv/bin/python' -m optiprimex.tools.uav_web --hub 127.0.0.1:1882 --bind '198.18.0.13' --port 8099 2>&1 | tee -i '/Users/<user>/Documents/BH1/RobotX/MASTER_SCRIPTS/logs/ocs/uavwin_20261114_153703/uav_web.log'; echo '[exited]'

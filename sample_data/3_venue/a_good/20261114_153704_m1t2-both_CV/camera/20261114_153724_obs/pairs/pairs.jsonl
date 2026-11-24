@@ -1,0 +1,4 @@
+{"utc":"2026-11-14T07:37:24.617532+00:00","frame":0,"svo_frame":0,"ts_ns":1794641844210578114,"rgb":"rgb_000001.jpg","depth":"depth_000001.png","vis":"depth_000001_vis.jpg","depth_valid_pct":53.2,"depth_unit":"mm","i":1}
+{"utc":"2026-11-14T07:37:35.170114+00:00","frame":6,"svo_frame":6,"ts_ns":1794641855018667114,"rgb":"rgb_000002.jpg","depth":"depth_000002.png","vis":"depth_000002_vis.jpg","depth_valid_pct":41.3,"depth_unit":"mm","i":2}
+{"utc":"2026-11-14T07:37:45.781427+00:00","frame":17,"svo_frame":17,"ts_ns":1794641865627620114,"rgb":"rgb_000003.jpg","depth":"depth_000003.png","vis":"depth_000003_vis.jpg","depth_valid_pct":48.5,"depth_unit":"mm","i":3}
+{"utc":"2026-11-14T07:37:56.268604+00:00","frame":34,"svo_frame":34,"ts_ns":1794641876037697114,"rgb":"rgb_000004.jpg","depth":"depth_000004.png","vis":"depth_000004_vis.jpg","depth_valid_pct":45.6,"depth_unit":"mm","i":4}
